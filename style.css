@@ -60,3 +60,14 @@ footer {
   text-align: center;
   padding: 15px 0;
 }
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.logo {
+  height: 60px;
+  width: auto;
+}
