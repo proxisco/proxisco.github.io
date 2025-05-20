@@ -71,8 +71,8 @@ footer {
   gap: 15px;
 }
 .blog-image {
-  width: 100%;
-  max-width: 600px;
+  width: 416px;
+  max-width: 416px;
   height: auto;
   margin: 10px 0 20px;
   border-radius: 8px;
