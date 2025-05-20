@@ -72,6 +72,7 @@ footer {
 }
 .bio-image {
   width: 416px;
+  max-width:100%;
   height: auto;
   margin: 10px 0 20px;
   border-radius: 8px;
