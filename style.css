@@ -75,3 +75,23 @@ a {
   color: #222;
   text-decoration: none;
 }
+.blog-post {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.blog-post h3 {
+  margin-top: 0;
+  color: #192BC2;
+}
+
+.blog-post a {
+  text-decoration: none;
+  color: #ECC33D;
+  font-weight: bold;
+}
+
+.blog-post a:hover {
+  text-decoration: underline;
+}
