@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A Smarter Way to Number Simulation Scenarios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #1E90FF;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border-left: 5px solid #1E90FF;
+            overflow-x: auto;
+        }
+        a {
+            color: #F4C431;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>A Smarter Way to Number Simulation Scenarios in Transportation Studies</h1>
+    <p><em>By Dr. Maryam Shirinzad – Principal Investigator, Proxisco</em></p>
+
+    <h2>The Problem</h2>
+    <p>Traditional methods of naming or tracking simulation runs rely on manually labeled combinations or arbitrary file names. But what if you want to automate everything, reproduce results months later, or scale to hundreds of configurations?</p>
+    <p>You need a <strong>deterministic and scalable indexing strategy</strong>.</p>
+
+    <h2>Our Solution: Hierarchical Scenario Numbering</h2>
+    <p>We treat every simulation scenario as a unique combination of input variables. Each variable has discrete options, and every scenario is like a "leaf" in a big simulation tree. We flatten this tree into a simple counter using a positional math trick borrowed from computer science: <strong>mixed-radix numeral systems</strong>.</p>
+
+    <h3>Example</h3>
+    <p>Let’s say your study includes the following 4 variables:</p>
+    <ul>
+        <li><strong>Demand Level</strong> (2 options)</li>
+        <li><strong>Signal Plan</strong> (2 options)</li>
+        <li><strong>Vehicle Mix</strong> (2 options)</li>
+        <li><strong>Driver Behavior</strong> (2 options)</li>
+    </ul>
+    <p>Total combinations = 2<sup>4</sup> = 16 scenarios</p>
+
+    <pre><code># Assume: i, j, k, l are the indices (0 or 1) of the 4 variable options
+counter = (2*2*2)*i + (2*2)*j + (2)*k + l + 1</code></pre>
+
+    <p>For scenario (1, 0, 1, 0):</p>
+    <pre><code>counter = 8*1 + 4*0 + 2*1 + 0 + 1 = 11</code></pre>
+
+    <h2>Why This Works (The Math)</h2>
+    <p>This method is mathematically equivalent to converting a 4-digit number in a base-[I, J, K, L] system into base-10. Each variable acts like a "digit," and the result is a unique number for each configuration.</p>
+
+    <h3>Reverse It Too</h3>
+    <p>Need to go backward? You can recover variable values from any scenario number:</p>
+    <pre><code>s = scenario_id - 1
+l = s % L; s //= L
+k = s % K; s //= K
+j = s % J; s //= J
+i = s</code></pre>
+
+    <h2>Who Should Use This</h2>
+    <ul>
+        <li>Transportation engineers running <strong>large simulation batches</strong></li>
+        <li>Researchers who value <strong>reproducibility</strong></li>
+        <li>Consultants creating <strong>automated modeling pipelines</strong></li>
+        <li>Agencies managing <strong>data integrity</strong> across studies</li>
+    </ul>
+
+    <h2>Try It Yourself</h2>
+    <p>You can implement this strategy in any programming language, but we’ve found Python to be especially intuitive. Drop this into your loop logic, and every run will be perfectly traceable.</p>
+    <p>Have questions or want us to implement a scenario numbering engine for your next project? <a href="mailto:info@proxisco.com">Contact us for a free consultation.</a></p>
+
+    <h2>About Proxisco</h2>
+    <p>Proxisco specializes in data-driven solutions at the intersection of <strong>transportation engineering</strong>, <strong>data science</strong>, and <strong>simulation modeling</strong>. We help public agencies and private firms design safer, smarter systems through innovative tools and rigorous analysis.</p>
+
+    <p><a href="https://proxisco.com">Explore our services</a> or follow us on LinkedIn for updates.</p>
+
+    <div class="footer">
+        <p>&copy; 2025 Proxisco. All rights reserved.</p>
+    </div>
+</body>
+</html>
